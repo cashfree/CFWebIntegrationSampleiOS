@@ -187,10 +187,7 @@ extension CFMerchantWebViewController: WKScriptMessageHandler {
     }
 
     private func isUPIDeepLink(_ msg: String) -> Bool {
-        let keywords = ["paytm", "phonepe", "tez", "bhim", "cred", "amazon",
-                        "whatsapp-consumer", "navi", "mobikwik", "freecharge",
-                        "myairtel", "popclub", "kiwi", "super", "simplypayupi"]
-        return keywords.contains(where: { msg.contains($0) })
+        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("mobikwik") || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi")
     }
     
     private func installedUPIApps() -> [[String: String]] {
