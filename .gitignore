@@ -2,6 +2,7 @@
 *.xcuserstate
 xcuserdata/
 *.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/
 
 # Build
 build/
