@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  CFWebIntegrationSample
 //
-//  iOS equivalent of Android's Application class entry point.
 //
 
 import UIKit
