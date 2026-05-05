@@ -9,8 +9,7 @@
 //    → CFWebIntegrationViewController POSTs the form to Cashfree checkout
 //
 //  MODE 2 — Merchant URL Integration (bottom section)
-//    Merchant's own website already embeds the Cashfree JS SDK and calls
-//    cashfree.checkout() itself. Native just loads that URL in a WKWebView
+//    Merchant's own website already embeds the Cashfree JS SDK, Native just loads that URL in a WKWebView
 //    with the nativeProcess bridge pre-registered.
 //    → CFMerchantWebViewController
 //
@@ -165,8 +164,6 @@ class ViewController: UIViewController {
         loadURLButton.alpha = 0.5
         loadURLButton.addTarget(self, action: #selector(loadURLTapped), for: .touchUpInside)
 
-        // ── Stack ────────────────────────────────────────────────────────
-        // scrollView is a class property so keyboard handlers can adjust its inset
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.keyboardDismissMode = .interactive   // drag to dismiss keyboard
         view.addSubview(scrollView)
@@ -204,28 +201,20 @@ class ViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView.addSubview(stack)
-
-        // For UIScrollView + Auto Layout:
-        //   • contentLayoutGuide anchors define the scrollable content size
-        //   • frameLayoutGuide.widthAnchor pins the stack width to the visible frame
-        //     (this tells Auto Layout the scroll direction is vertical, not horizontal)
         let content = scrollView.contentLayoutGuide
         let frame   = scrollView.frameLayoutGuide
 
         NSLayoutConstraint.activate([
-            // Scroll view fills the safe area
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            // Stack is pinned to contentLayoutGuide — this drives the scroll height
             stack.topAnchor.constraint(equalTo: content.topAnchor, constant: 32),
             stack.bottomAnchor.constraint(equalTo: content.bottomAnchor, constant: -40),
             stack.leadingAnchor.constraint(equalTo: content.leadingAnchor, constant: 24),
             stack.trailingAnchor.constraint(equalTo: content.trailingAnchor, constant: -24),
 
-            // Width is pinned to frameLayoutGuide — prevents horizontal scrolling
             stack.widthAnchor.constraint(equalTo: frame.widthAnchor, constant: -48),
 
             divider.heightAnchor.constraint(equalToConstant: 0.5),
@@ -241,9 +230,8 @@ class ViewController: UIViewController {
     // MARK: - Keyboard Handling
 
     private func setupKeyboard() {
-        // Tap anywhere on the scroll view (outside a text field) to dismiss keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false   // still lets buttons receive taps
+        tap.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tap)
     }
 
@@ -256,7 +244,6 @@ class ViewController: UIViewController {
               let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
               let duration = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         else { return }
-        // Push scrollView content up so bottom items (urlField, loadURLButton) remain reachable
         let bottomInset = keyboardFrame.height - view.safeAreaInsets.bottom
         UIView.animate(withDuration: duration) {
             self.scrollView.contentInset.bottom = bottomInset
@@ -274,7 +261,6 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Mode 1 Actions
-
     @objc private func sessionFieldChanged() {
         let text = sessionField.text?.trimmingCharacters(in: .whitespaces) ?? ""
         paymentSessionId = text
@@ -320,7 +306,6 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Mode 2 Actions
-
     @objc private func urlFieldChanged() {
         let text = urlField.text?.trimmingCharacters(in: .whitespaces) ?? ""
         updateButton(loadURLButton, enabled: !text.isEmpty)
