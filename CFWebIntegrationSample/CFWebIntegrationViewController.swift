@@ -210,7 +210,7 @@ extension CFWebIntegrationViewController: WKScriptMessageHandler {
 
     // Returns true if the message body is a UPI intent deep-link URL
     private func isUPIDeepLink(_ msg: String) -> Bool {
-        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("payz") || msg.contains("mobikwik")  || msg.contains("freecharge")  || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("slice") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi")
+        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("mobikwik") || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi")
     }
 
     // Filters upiApps to only those actually installed on this device.
