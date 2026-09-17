@@ -66,6 +66,30 @@ private let upiApps = [
     [
         "displayName": "SIMPLYPAY",
         "id": "simplypayupi://",
+    ],
+    [
+        "displayName": "TNUPI",
+        "id": "tnupi://",
+    ],
+    [
+        "displayName": "POSTPE",
+        "id": "postpe://",
+    ],
+    [
+        "displayName": "IMOBILE",
+        "id": "imobile://",
+    ],
+    [
+        "displayName": "PAYZAPP",
+        "id": "payzapp://",
+    ],
+    [
+        "displayName": "FPUPI",
+        "id": "fpupi://",
+    ],
+    [
+        "displayName": "SNAPMINT",
+        "id": "snapmint://",
     ]
 ]
 
@@ -210,7 +234,7 @@ extension CFWebIntegrationViewController: WKScriptMessageHandler {
 
     // Returns true if the message body is a UPI intent deep-link URL
     private func isUPIDeepLink(_ msg: String) -> Bool {
-        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("mobikwik") || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi")
+        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("mobikwik") || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi") || msg.contains("tnupi") || msg.contains("postpe") || msg.contains("imobile") || msg.contains("payzapp") || msg.contains("fpupi") || msg.contains("snapmint")
     }
 
     // Filters upiApps to only those actually installed on this device.
@@ -300,4 +324,10 @@ extension CFWebIntegrationViewController: WKNavigationDelegate {
 //     <string>super</string>
 //     <string>kiwi</string>
 //     <string>simplypayupi</string>
+//     <string>tnupi</string>
+//     <string>postpe</string>
+//     <string>imobile</string>
+//     <string>payzapp</string>
+//     <string>fpupi</string>
+//     <string>snapmint</string>
 // </array>
