@@ -62,6 +62,30 @@ private let upiApps = [
     [
         "displayName": "SIMPLYPAY",
         "id": "simplypayupi://",
+    ],
+    [
+        "displayName": "TNUPI",
+        "id": "tnupi://",
+    ],
+    [
+        "displayName": "POSTPE",
+        "id": "postpe://",
+    ],
+    [
+        "displayName": "IMOBILE",
+        "id": "imobile://",
+    ],
+    [
+        "displayName": "PAYZAPP",
+        "id": "payzapp://",
+    ],
+    [
+        "displayName": "FPUPI",
+        "id": "fpupi://",
+    ],
+    [
+        "displayName": "SNAPMINT",
+        "id": "snapmint://",
     ]
 ]
 
@@ -187,7 +211,7 @@ extension CFMerchantWebViewController: WKScriptMessageHandler {
     }
 
     private func isUPIDeepLink(_ msg: String) -> Bool {
-        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("mobikwik") || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi")
+        return msg.contains("paytm") || msg.contains("phonepe") || msg.contains("tez") || msg.contains("bhim") || msg.contains("cred") || msg.contains("amazon") || msg.contains("whatsapp-consumer") || msg.contains("navi") || msg.contains("mobikwik") || msg.contains("myairtel")  || msg.contains("popclub") || msg.contains("kiwi") || msg.contains("super") || msg.contains("simplypayupi") || msg.contains("tnupi") || msg.contains("postpe") || msg.contains("imobile") || msg.contains("payzapp") || msg.contains("fpupi") || msg.contains("snapmint")
     }
     
     private func installedUPIApps() -> [[String: String]] {
